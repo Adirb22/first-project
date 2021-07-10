@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 61.1 (101010) - https://sketch.com -->
+    <title>D0A9ED70-9E66-491C-BE13-5DE59929464F</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <path d="M12,10.5 C12.8284271,10.5 13.5,9.82842712 13.5,9 C13.5,8.17157288 12.8284271,7.5 12,7.5 C11.1715729,7.5 10.5,8.17157288 10.5,9 C10.5,9.82842712 11.1715729,10.5 12,10.5 Z M12,12 C10.3431458,12 9,10.6568542 9,9 C9,7.34314575 10.3431458,6 12,6 C13.6568542,6 15,7.34314575 15,9 C15,10.6568542 13.6568542,12 12,12 Z M16.5,9 C16.5,6.51471862 14.4852814,4.5 12,4.5 C9.51471863,4.5 7.5,6.51471862 7.5,9 C7.5,10.5861466 8.99986691,13.7668987 12,18.3199668 C15.0001331,13.7668987 16.5,10.5861466 16.5,9 Z M12,21 C8,15.209139 6,11.209139 6,9 C6,5.6862915 8.6862915,3 12,3 C15.3137085,3 18,5.6862915 18,9 C18,11.209139 16,15.209139 12,21 Z" id="path-1"></path>
+    </defs>
+    <g id="Asset-Artboard-Page" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="2.-icons/24px">
+            <g id="icon-5.-pieces/platform-agnostic/icons/miscellaneous/icon-location">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="icon-location" fill="#006341" fill-rule="nonzero" xlink:href="#path-1"></use>
+            </g>
+        </g>
+    </g>
+</svg>

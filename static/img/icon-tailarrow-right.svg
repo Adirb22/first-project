@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 61 (101010) - https://sketch.com -->
+    <title>CA051C08-EE78-43C4-9A1D-657A890DAE43</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <polygon id="path-1" points="16.1783004 12.7343032 4.875 12.7343032 4.875 11.2656968 16.1783004 11.2656968 11.0946697 6.28846154 12.1553298 5.25 19.0496206 12 12.1553298 18.75 11.0946697 17.7115385 16.1783004 12.7343032"></polygon>
+    </defs>
+    <g id="Asset-Artboard-Page" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="App---Icons/24px-Web---Pieces/2.-Icons/icon-tailarrow-right">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="icon-tailarrow-right" fill="#009639" fill-rule="nonzero" xlink:href="#path-1"></use>
+            <g id="Icon-colour-mask-Web---Pieces/2.-Icons/1.-Masks/No-Mask" mask="url(#mask-2)"></g>
+        </g>
+    </g>
+</svg>
